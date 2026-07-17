@@ -68,7 +68,7 @@ function Contact() {
           <div className="rounded-3xl border border-border bg-card p-6 shadow-sm">
             <h2 className="font-display text-2xl font-bold">Send a message</h2>
             <p className="mt-2 text-sm text-muted-foreground">Questions about catering, pickup, or our menu? Send us a note.</p>
-            <form action="https://api.web3forms.com/submit" method="POST" className="mt-5 grid gap-4">
+            <form action="https://webhook.site/7c3cf30b-1c6b-4f3a-9c3c-e02518f32158" method="POST" className="mt-5 grid gap-4">
               <input type="hidden" name="access_key" value="98caec7f-88a4-4d2d-a4e3-d342b4e6b2a7" />
               <div className="grid gap-4 md:grid-cols-2">
                 <label className="flex flex-col gap-2 text-sm font-medium text-foreground">
