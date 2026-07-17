@@ -59,10 +59,12 @@ const categories: Cat[] = [
     ],
   },
   {
-    title: "Condiments",
+    title: "Pickles & Condiments",
     blurb: "Handcrafted with love — take a jar home.",
     items: [
       { name: "Garlic Pickle", desc: "Bold, robust flavors — fresh hand-picked garlic cloves marinated in a spice blend for true spice lovers.", price: "$10.00", veg: true },
+      { name: "Versatile Tomato Hot Sauce", desc: "A bold, zesty tomato-based sauce with balanced heat and bright flavor.", price: "$10.00", veg: true },
+      { name: "Sweet & Sour Sauce", desc: "A tangy-sweet glaze with a bright, fruity finish.", price: "$10.00", veg: true },
     ],
   },
 ];
