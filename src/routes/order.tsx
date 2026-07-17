@@ -63,13 +63,13 @@ function OrderPage() {
           </div>
         ) : (
           <form onSubmit={submit} className="mt-8 grid gap-5 md:grid-cols-2">
-            <Field label="Full name" required><input required maxLength={100} value={form.name} onChange={e => setForm({...form, name: e.target.value})} className="input" /></Field>
-            <Field label="Email" required><input required type="email" maxLength={200} value={form.email} onChange={e => setForm({...form, email: e.target.value})} className="input" /></Field>
-            <Field label="Phone"><input type="tel" maxLength={30} value={form.phone} onChange={e => setForm({...form, phone: e.target.value})} className="input" /></Field>
-            <Field label="Order type"><select value={form.type} onChange={e => setForm({...form, type: e.target.value})} className="input"><option>Catering</option><option>Pickup</option><option>Delivery</option><option>Event</option></select></Field>
-            <Field label="Date needed"><input type="date" value={form.date} onChange={e => setForm({...form, date: e.target.value})} className="input" /></Field>
+            <Field label="Full name" required><input name="name" required maxLength={100} value={form.name} onChange={e => setForm({...form, name: e.target.value})} className="input" /></Field>
+            <Field label="Email" required><input name="email" required type="email" maxLength={200} value={form.email} onChange={e => setForm({...form, email: e.target.value})} className="input" /></Field>
+            <Field label="Phone"><input name="phone" type="tel" maxLength={30} value={form.phone} onChange={e => setForm({...form, phone: e.target.value})} className="input" /></Field>
+            <Field label="Order type"><select name="type" value={form.type} onChange={e => setForm({...form, type: e.target.value})} className="input"><option>Catering</option><option>Pickup</option><option>Delivery</option><option>Event</option></select></Field>
+            <Field label="Date needed"><input name="date" type="date" value={form.date} onChange={e => setForm({...form, date: e.target.value})} className="input" /></Field>
             <div className="md:col-span-2">
-              <Field label="Message" required><textarea required maxLength={1500} rows={5} value={form.message} onChange={e => setForm({...form, message: e.target.value})} className="input resize-none" placeholder="How many people, what you're thinking, any dietary notes..." /></Field>
+              <Field label="Message" required><textarea name="message" required maxLength={1500} rows={5} value={form.message} onChange={e => setForm({...form, message: e.target.value})} className="input resize-none" placeholder="How many people, what you're thinking, any dietary notes..." /></Field>
             </div>
             <div className="md:col-span-2">
               <button type="submit" className="w-full md:w-auto inline-flex justify-center items-center gap-2 rounded-full bg-primary px-8 py-3 text-base font-semibold text-primary-foreground hover:bg-primary/90">Send inquiry</button>
