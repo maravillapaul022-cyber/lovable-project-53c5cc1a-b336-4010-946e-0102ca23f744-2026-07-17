@@ -55,14 +55,40 @@ function Contact() {
             </dl>
           </InfoCard>
         </div>
-        <div className="rounded-3xl overflow-hidden border border-border shadow-sm min-h-[400px]">
-          <iframe
-            title="Preeti's Kitchen location"
-            src="https://www.google.com/maps?q=203+Desrochers+Blvd+SW+Edmonton+AB&output=embed"
-            className="h-full w-full min-h-[400px]"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+        <div className="space-y-6">
+          <div className="rounded-3xl overflow-hidden border border-border shadow-sm min-h-[400px]">
+            <iframe
+              title="Preeti's Kitchen location"
+              src="https://www.google.com/maps?q=203+Desrochers+Blvd+SW+Edmonton+AB&output=embed"
+              className="h-full w-full min-h-[400px]"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+          <div className="rounded-3xl border border-border bg-card p-6 shadow-sm">
+            <h2 className="font-display text-2xl font-bold">Send a message</h2>
+            <p className="mt-2 text-sm text-muted-foreground">Questions about catering, pickup, or our menu? Send us a note.</p>
+            <form action="https://api.web3forms.com/submit" method="POST" className="mt-5 grid gap-4">
+              <input type="hidden" name="access_key" value="98caec7f-88a4-4d2d-a4e3-d342b4e6b2a7" />
+              <div className="grid gap-4 md:grid-cols-2">
+                <label className="flex flex-col gap-2 text-sm font-medium text-foreground">
+                  <span>Name</span>
+                  <input type="text" name="name" required className="rounded-xl border border-input bg-background px-3 py-2 text-sm outline-none ring-0 focus:border-primary" />
+                </label>
+                <label className="flex flex-col gap-2 text-sm font-medium text-foreground">
+                  <span>Email</span>
+                  <input type="email" name="email" required className="rounded-xl border border-input bg-background px-3 py-2 text-sm outline-none ring-0 focus:border-primary" />
+                </label>
+              </div>
+              <label className="flex flex-col gap-2 text-sm font-medium text-foreground">
+                <span>Message</span>
+                <textarea name="message" rows={5} required className="rounded-xl border border-input bg-background px-3 py-2 text-sm outline-none ring-0 focus:border-primary" />
+              </label>
+              <button type="submit" className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
+                Send message
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
