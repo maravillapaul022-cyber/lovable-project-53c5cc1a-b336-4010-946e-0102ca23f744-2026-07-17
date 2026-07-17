@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { MapPin, Phone, Clock } from "lucide-react";
+import { useState, type FormEvent } from "react";
 
 export const Route = createFileRoute("/contact")({
   component: Contact,
@@ -26,6 +27,28 @@ const hours = [
 ];
 
 function Contact() {
+  const [result, setResult] = useState("");
+
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    formData.append("access_key", "98caec7f-88a4-4d2d-a4e3-d342b4e6b2a7");
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+    const data = await response.json();
+    if (data.success) {
+      setResult("Form Submitted Successfully");
+      alert("Form Submitted Successfully");
+      event.target.reset();
+    } else {
+      console.log("Error", data);
+      setResult(data.message);
+      alert(data.message);
+    }
+  };
+
   return (
     <div className="mx-auto max-w-6xl px-5 py-16 md:py-24">
       <div className="max-w-2xl">
@@ -68,8 +91,7 @@ function Contact() {
           <div className="rounded-3xl border border-border bg-card p-6 shadow-sm">
             <h2 className="font-display text-2xl font-bold">Send a message</h2>
             <p className="mt-2 text-sm text-muted-foreground">Questions about catering, pickup, or our menu? Send us a note.</p>
-            <form action="https://webhook.site/7c3cf30b-1c6b-4f3a-9c3c-e02518f32158" method="POST" className="mt-5 grid gap-4">
-              <input type="hidden" name="access_key" value="98caec7f-88a4-4d2d-a4e3-d342b4e6b2a7" />
+            <form onSubmit={onSubmit} className="mt-5 grid gap-4">
               <div className="grid gap-4 md:grid-cols-2">
                 <label className="flex flex-col gap-2 text-sm font-medium text-foreground">
                   <span>Name</span>
@@ -87,6 +109,7 @@ function Contact() {
               <button type="submit" className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
                 Send message
               </button>
+              {result ? <p className="sr-only" aria-live="polite">{result}</p> : null}
             </form>
           </div>
         </div>
