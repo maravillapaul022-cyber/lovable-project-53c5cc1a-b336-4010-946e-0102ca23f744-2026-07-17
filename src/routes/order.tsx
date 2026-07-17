@@ -20,11 +20,29 @@ function OrderPage() {
   const [sent, setSent] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", phone: "", type: "Catering", date: "", message: "" });
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name.trim() || !form.email.trim() || !form.message.trim()) return;
     if (form.name.length > 100 || form.email.length > 200 || form.message.length > 1500) return;
-    setSent(true);
+
+    const formData = new FormData();
+    formData.append("access_key", "98caec7f-88a4-4d2d-a4e3-d342b4e6b2a7");
+    formData.append("name", form.name);
+    formData.append("email", form.email);
+    formData.append("phone", form.phone);
+    formData.append("type", form.type);
+    formData.append("date", form.date);
+    formData.append("message", form.message);
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+    if (response.ok && data.success) {
+      setSent(true);
+    }
   };
 
   return (
